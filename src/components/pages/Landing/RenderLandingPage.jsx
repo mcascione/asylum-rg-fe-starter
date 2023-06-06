@@ -32,32 +32,32 @@ function RenderLandingPage(props) {
       </div>
 
       <div className="graphs-section">
-        <img
-          src={GrantRatesByOfficeImg}
-          alt="Grant Rates By Office"
-          className="gr-office-img"
-        ></img>
-        <p className="grant-rates-by-office-graph-container">
-          Search Grant Rates By Office
-        </p>
+        <div className="grant-rates-by-office-graph-container">
+          <img
+            src={GrantRatesByOfficeImg}
+            alt="Grant Rates By Office"
+            className="gr-office-img"
+          ></img>
+          <p>Search Grant Rates By Office</p>
+        </div>
 
-        <img
-          src={GrantRatesByNationalityImg}
-          alt="Grant Rates By Nationality"
-          className="gr-nationality-img"
-        ></img>
-        <p className="grant-rates-by-nationality-container">
-          Search Grant Rates By Nationality
-        </p>
+        <div className="grant-rates-by-nationality-container">
+          <img
+            src={GrantRatesByNationalityImg}
+            alt="Grant Rates By Nationality"
+            className="gr-nationality-img"
+          ></img>
+          <p>Search Grant Rates By Nationality</p>
+        </div>
 
-        <img
-          src={GrantRatesOverTimeImg}
-          alt="Grant Rates Over Time"
-          className="gr-overtime-img"
-        ></img>
-        <p className="grant-rates-over-time-container">
-          Search Grant Rates Over Time
-        </p>
+        <div className="grant-rates-over-time-container">
+          <img
+            src={GrantRatesOverTimeImg}
+            alt="Grant Rates Over Time"
+            className="gr-overtime-img"
+          ></img>
+          <p>Search Grant Rates Over Time</p>
+        </div>
       </div>
 
       <div className="view-more-data-btn-container">
