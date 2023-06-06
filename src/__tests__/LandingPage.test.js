@@ -8,6 +8,7 @@ test('test the tests', () => {
 
 let getByAltText = () => {};
 let getByText = () => {};
+let container = null;
 
 // Reuse query functions across multiple test blocks
 beforeEach(() => {
@@ -15,6 +16,7 @@ beforeEach(() => {
   const renderResult = render(<LandingContainer />);
   getByAltText = renderResult.getByAltText;
   getByText = renderResult.getByText;
+  container = renderResult.container;
 });
 
 describe('Render Graphs Section in Landing Page', () => {
@@ -54,8 +56,27 @@ describe('Render Bottom Section in Landing Page', () => {
     const bottomHeading = getByText(/systemic disparity insights/i);
     expect(bottomHeading).toBeInTheDocument();
   });
-  //Fact containers
+  //Data containers
+  test('data1 container renders', () => {
+    const dataContainer1 = container.querySelector(
+      '.first-data-point-container'
+    );
+    expect(dataContainer1).toBeInTheDocument();
+  });
 
+  test('data2 container renders', () => {
+    const dataContainer2 = container.querySelector(
+      '.second-data-point-container'
+    );
+    expect(dataContainer2).toBeInTheDocument();
+  });
+
+  test('data3 container renders', () => {
+    const dataContainer3 = container.querySelector(
+      '.third-data-point-container'
+    );
+    expect(dataContainer3).toBeInTheDocument();
+  });
   //Read More Button
 
   //Assert that the Back to Top Button functions
