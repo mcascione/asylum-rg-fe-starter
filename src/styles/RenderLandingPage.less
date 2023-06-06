@@ -15,6 +15,7 @@
     width: 100%;
     height: 20vh;
     margin-bottom: 10%;
+    padding-top: 5px;
 }
 
 .hrf-logo-img-container img {
@@ -41,19 +42,48 @@
     font-size: 1.2rem;
 }
 
-//  ADD THIS BACK IN WHEN YOU HAVE THE GRAPHS SECTION
+//graphs section styling//
 
 .graphs-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.grant-rates-by-office-graph-container, .grant-rates-over-time-container  {
+    text-align: center;
+    height: 165px;
+    font-size: 1.5rem;
+    font-family: 'acumin';
+}
+
+.gr-office-img, .gr-overtime-img {
+    height: 165px;
+    width: 320px;
+    margin-bottom: 10%;
+}
+
+.grant-rates-by-nationality-container {
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: -15px;
+    font-size: 1.5rem;
+    font-family: 'acumin';
+}
+
+.gr-nationality-img {
+    margin-bottom: 7%;
+    margin-left: -15px;
+    height: 175px;
+    width: 200px;
 }
 
 .view-more-data-btn-container {
     height: 44px;
-    width: 180px;
-    margin: 0 auto;
+    width: 300px;
+    margin: 0 auto 10%;
     text-align: center;
-    margin-bottom: 10%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .middle-section {
@@ -733,52 +763,6 @@
         font-size: 1.4rem;
         width: 75%;
         margin: 0 auto;
-    }
-
-
-    .graphs-section {
-        display: flex;
-        justify-content: center;
-    }
-
-    .grant-rates-by-office-graph-container {
-        margin-top: 20%;
-        margin-bottom: 40%;
-    }
-
-    .grant-rates-by-office-graph-container p {
-        font-size: 1.5rem;
-    }
-
-    .gr-office-img {
-        height: 232px;
-        width: 450px;
-    }
-
-    .grant-rates-by-nationality-container {
-        margin-bottom: 25%;
-    }
-
-    .grant-rates-by-nationality-container p {
-        font-size: 1.5rem;
-    }
-
-    .gr-nationality-img {
-        margin-bottom: 8%;
-        height: 335px;
-        width: 383px;
-    }
-
-    .grant-rates-over-time-container {
-        margin-bottom: 40%;
-    }
-
-    .gr-overtime-img {
-        height: 232px;
-        width: 450px;
-    }
-    .grant-rates-over-time-container p {
-        font-size: 1.5rem; 
     }
 
     .middle-section {
