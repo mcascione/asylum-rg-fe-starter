@@ -6,20 +6,19 @@ test('test the tests', () => {
   expect(5).toBe(5);
 });
 
+let getByAltText = () => {};
+let getByText = () => {};
+
+// Reuse query functions across multiple test blocks
+beforeEach(() => {
+  // Destructure query functions from the render function's result collection
+  const renderResult = render(<LandingContainer />);
+  getByAltText = renderResult.getByAltText;
+  getByText = renderResult.getByText;
+});
+
 describe('Render Graphs Section in Landing Page', () => {
-  let getByAltText;
-  let getByText;
-
-  // Reuse query functions across multiple test blocks
-  beforeEach(() => {
-    // Destructure query functions from the render function's result collection
-    const renderResult = render(<LandingContainer />);
-    getByAltText = renderResult.getByAltText;
-    getByText = renderResult.getByText;
-  });
-
   // Assert the presence of images (classNames)
-
   test('renders graphImg1', () => {
     const graphImg1 = getByAltText('Grant Rates By Office');
     expect(graphImg1).toBeInTheDocument();
@@ -46,4 +45,18 @@ describe('Render Graphs Section in Landing Page', () => {
     const caption1 = getByText('Search Grant Rates Over Time');
     expect(caption1).toBeInTheDocument();
   });
+});
+
+describe('Render Bottom Section in Landing Page', () => {
+  //Assert the presence of the bottom block elements
+  //Heading
+  test('bottom heading renders', () => {
+    const bottomHeading = getByText(/systemic disparity insights/i);
+    expect(bottomHeading).toBeInTheDocument();
+  });
+  //Fact containers
+
+  //Read More Button
+
+  //Assert that the Back to Top Button functions
 });
