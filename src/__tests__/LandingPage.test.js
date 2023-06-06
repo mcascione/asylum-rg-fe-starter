@@ -6,7 +6,7 @@ test('test the tests', () => {
   expect(5).toBe(5);
 });
 
-describe('Render Landing Page', () => {
+describe('Render Graphs Section in Landing Page', () => {
   let getByAltText;
   let getByText;
 
