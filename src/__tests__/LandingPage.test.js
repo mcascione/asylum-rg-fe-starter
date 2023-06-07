@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import LandingContainer from '../components/pages/Landing/LandingContainer';
 
 test('test the tests', () => {
@@ -78,6 +78,10 @@ describe('Render Bottom Section in Landing Page', () => {
     expect(dataContainer3).toBeInTheDocument();
   });
   //Read More Button
+  test('read more button renders', () => {
+    const readMoreButton = getByText('Read More');
+    expect(readMoreButton).toBeInTheDocument();
+  });
 
   //Assert that the Back to Top Button functions
 });

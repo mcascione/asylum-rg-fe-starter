@@ -66,14 +66,14 @@ function RenderLandingPage(props) {
           style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
           onClick={() => history.push('/graphs')}
         >
-          View the Data
+          <span>View the Data</span>
         </Button>
         <Button
           type="default"
           style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
           onClick={() => history.push('/graphs')}
         >
-          Download the Data
+          <span>Download the Data</span>
         </Button>
       </div>
 
@@ -122,6 +122,22 @@ function RenderLandingPage(props) {
             </h3>
           </div>
         </div>
+        <a
+          href="https://humanrightsfirst.org/library/uscis-records-reveal-systemic-disparities-in-asylum-decisions/"
+          target="_blank"
+          rel="noreferrer"
+          className="read-more-btn"
+        >
+          <div className="read-more-btn bottom-section">
+            <Button
+              type="default"
+              className="ant-btn ant-btn-default"
+              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+            >
+              <span>Read More</span>
+            </Button>
+          </div>
+        </a>
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
         </p>
