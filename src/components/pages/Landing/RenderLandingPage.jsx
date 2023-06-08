@@ -1,5 +1,5 @@
 import React from 'react';
-// ADD IMPORTS BACK FOR GRAPHS SECTION
+// ADDED IMPORTS BACK FOR GRAPHS SECTION
 import GrantRatesByOfficeImg from '../../../styles/Images/bar-graph-no-text.png';
 import GrantRatesByNationalityImg from '../../../styles/Images/pie-chart-no-text.png';
 import GrantRatesOverTimeImg from '../../../styles/Images/line-graph-no-text.png';
@@ -13,7 +13,11 @@ import { useHistory } from 'react-router-dom';
 function RenderLandingPage(props) {
   const scrollToTop = () => {
     document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    document.documentElement.scrollTop = {
+      top: 0,
+      bottom: 0,
+      behavior: 'smooth',
+    };
   };
 
   const history = useHistory();
