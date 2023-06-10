@@ -1,6 +1,14 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import LandingContainer from '../components/pages/Landing/LandingContainer';
+import { createBrowserHistory } from 'history';
+import { Router } from 'react-router-dom';
+import * as UtilsModule from '../utils';
+
+jest.mock('../utils', () => ({
+  ...jest.requireActual('../utils'),
+  downloadCsvData: jest.fn(),
+}));
 
 test('test the tests', () => {
   expect(5).toBe(5);
@@ -10,10 +18,18 @@ let getByAltText = () => {};
 let getByText = () => {};
 let container = null;
 
+//create a history variable to use for testing path changes
+const history = createBrowserHistory();
+
 // Reuse query functions across multiple test blocks
 beforeEach(() => {
   // Destructure query functions from the render function's result collection
-  const renderResult = render(<LandingContainer />);
+  // use the Router to wrap the container for path route tests
+  const renderResult = render(
+    <Router history={history}>
+      <LandingContainer />
+    </Router>
+  );
   getByAltText = renderResult.getByAltText;
   getByText = renderResult.getByText;
   container = renderResult.container;
@@ -46,6 +62,39 @@ describe('Render Graphs Section in Landing Page', () => {
   test('renders caption3', () => {
     const caption1 = getByText('Search Grant Rates Over Time');
     expect(caption1).toBeInTheDocument();
+  });
+
+  // View the Data button renders and routes to graphs
+  test('renders viewData button', () => {
+    const viewDataButton = getByText('View the Data');
+    expect(viewDataButton).toBeInTheDocument();
+  });
+
+  test('click viewDataButton routes to /graphs', async () => {
+    const viewDataButton = getByText('View the Data');
+    fireEvent.click(viewDataButton);
+
+    await waitFor(() => {
+      expect(history.location.pathname).toBe('/graphs');
+    });
+  });
+
+  // Download the Data button renders and calls helper function
+  test('renders downloadData button', () => {
+    const downloadDataButton = getByText('Download the Data');
+    expect(downloadDataButton).toBeInTheDocument();
+  });
+
+  test('clicking downloadData calls handleDownloadData', () => {
+    const downloadCsvDataSpy = jest.spyOn(UtilsModule, 'downloadCsvData');
+
+    const downloadDataSpan = getByText('Download the Data');
+    const downloadDataButton = downloadDataSpan.parentElement;
+
+    fireEvent.click(downloadDataButton);
+
+    expect(downloadCsvDataSpy).toHaveBeenCalledTimes(1);
+    expect(downloadCsvDataSpy).toHaveBeenCalledWith();
   });
 });
 
