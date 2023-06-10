@@ -83,5 +83,30 @@ describe('Render Bottom Section in Landing Page', () => {
     expect(readMoreButton).toBeInTheDocument();
   });
 
-  //Assert that the Back to Top Button functions
+  //Assert that the Back to Top Paragraph renders and functions
+  test('Back to Top paragraph renders', () => {
+    const backToTop = getByText('Back To Top ^');
+    expect(backToTop).toBeInTheDocument();
+    expect(backToTop).toBeVisible();
+  });
+
+  test('clicking backToTop calls scrollToTop function', () => {
+    // mock the window.scrollTo method
+    const scrollToMock = jest.fn();
+    window.scrollTo = scrollToMock;
+
+    // get the element and simulate a click
+    const backToTop = getByText('Back To Top ^');
+    fireEvent.click(backToTop);
+
+    //assertions
+    expect(scrollToMock).toHaveBeenCalledTimes(1);
+    expect(scrollToMock).toHaveBeenCalledWith({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    //clean up the mock to prevent potential side effects
+    window.scrollTo.mockRestore();
+  });
 });

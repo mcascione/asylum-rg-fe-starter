@@ -11,13 +11,12 @@ import { useHistory } from 'react-router-dom';
 // import PageNav from '../../common/PageNav';
 
 function RenderLandingPage(props) {
+  // change to Window scrollTo method from Element:scrollTop property to take advantage of smooth scrolling and cross-browser functionality
   const scrollToTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = {
+    window.scrollTo({
       top: 0,
-      bottom: 0,
-      behavior: 'smooth',
-    };
+      behavior: 'smooth', // Add smooth scrolling behavior
+    });
   };
 
   const history = useHistory();
