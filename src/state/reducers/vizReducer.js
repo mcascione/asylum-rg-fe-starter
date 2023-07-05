@@ -144,14 +144,8 @@ const vizReducer = (state = initialState, action) => {
           case 'citizenship':
             return {
               ...state,
-              offices: {
-                ...state.offices,
-                [action.payload.office]: {
-                  ...state.offices[action.payload.office],
-                  citizenshipMapData: {},
-                  citizenshipMapYears: [2015, currentYear],
-                },
-              },
+              citizenshipMapAllData: {},
+              citizenshipMapAllYears: [2015, currentYear],
             };
           default:
             return state;
@@ -182,7 +176,7 @@ const vizReducer = (state = initialState, action) => {
             dataKey = 'timeSeriesData';
             break;
           case 'citizenship':
-            dataKey = 'citizenshipMapData';
+            dataKey = 'citizenshipMapAllData';
             break;
           default:
             break;
@@ -227,7 +221,7 @@ const vizReducer = (state = initialState, action) => {
             dataKey = 'timeSeriesYears';
             break;
           case 'citizenship':
-            dataKey = 'citizenshipMapYears';
+            dataKey = 'citizenshipMapAllYears';
             break;
           default:
             dataKey = 'timeSeriesYears';
