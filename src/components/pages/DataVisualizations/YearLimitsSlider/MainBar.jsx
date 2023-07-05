@@ -37,7 +37,7 @@ const mapStateToProps = (state, ownProps) => {
         };
       case 'citizenship':
         return {
-          years: state.vizReducer.offices[office].citizenshipMapYears,
+          years: state.vizReducer.citizenshipMapAllYears,
         };
       default:
         return {
