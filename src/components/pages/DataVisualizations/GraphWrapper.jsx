@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CitizenshipMapAll from './Graphs/CitizenshipMapAll';
-import CitizenshipMapSingleOffice from './Graphs/CitizenshipMapSingleOffice';
+// import CitizenshipMapSingleOffice from './Graphs/CitizenshipMapSingleOffice';
 import TimeSeriesAll from './Graphs/TimeSeriesAll';
 import OfficeHeatMap from './Graphs/OfficeHeatMap';
 import TimeSeriesSingleOffice from './Graphs/TimeSeriesSingleOffice';
@@ -10,7 +10,7 @@ import YearLimitsSelect from './YearLimitsSelect';
 import ViewSelect from './ViewSelect';
 import axios from 'axios';
 import { resetVisualizationQuery } from '../../../state/actionCreators';
-import test_data from '../../../data/test_data.json';
+// import test_data from '../../../data/test_data.json';
 import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
 
@@ -44,7 +44,7 @@ function GraphWrapper(props) {
         map_to_render = <TimeSeriesSingleOffice office={office} />;
         break;
       case 'citizenship':
-        map_to_render = <CitizenshipMapSingleOffice office={office} />;
+        map_to_render = <CitizenshipMapAll />;
         break;
       default:
         break;
@@ -72,10 +72,11 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
-
+    const path =
+      view === 'time-series' ? 'fiscalSummary' : 'citizenshipSummary';
     if (office === 'all' || !office) {
       axios
-        .get(process.env.REACT_APP_API_URI, {
+        .get(`${process.env.REACT_APP_API_URI}/${path}`, {
           // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
           params: {
             from: years[0],
@@ -83,14 +84,18 @@ function GraphWrapper(props) {
           },
         })
         .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+          const data =
+            view === 'citizenship'
+              ? [{ citizenshipResults: result.data }]
+              : [result.data];
+          stateSettingCallback(view, office, data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
         })
         .catch(err => {
           console.error(err);
         });
     } else {
       axios
-        .get(process.env.REACT_APP_API_URI, {
+        .get(`${process.env.REACT_APP_API_URI}/${path}`, {
           // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
           params: {
             from: years[0],
@@ -99,7 +104,11 @@ function GraphWrapper(props) {
           },
         })
         .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+          const data =
+            view === 'citizenship'
+              ? [{ citizenshipResults: result.data }]
+              : [result.data];
+          stateSettingCallback(view, office, data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
         })
         .catch(err => {
           console.error(err);
