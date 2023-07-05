@@ -41,7 +41,7 @@ const mapStateToProps = (state, ownProps) => {
         };
       case 'citizenship':
         return {
-          years: state.vizReducer.offices[office].citizenshipMapYears,
+          years: state.vizReducer.citizenshipMapAllYears,
         };
       default:
         return {
@@ -52,8 +52,14 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 function YearLimitsSelect(props) {
-  let { view, office, dispatch, clearQuery, updateStateWithNewData, years } =
-    props;
+  let {
+    view,
+    office,
+    dispatch,
+    clearQuery,
+    updateStateWithNewData,
+    years,
+  } = props;
   // const yearInputsOnChange = (view, office, e) => {
   //   dispatch(
   //     setHeatMapYears(
