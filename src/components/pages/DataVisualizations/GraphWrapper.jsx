@@ -73,7 +73,7 @@ function GraphWrapper(props) {
     
     */
     const path =
-      view === 'time-series' ? 'fiscalSummary' : 'citizenshipSummary';
+      view === 'citizenship' ? 'citizenshipSummary' : 'fiscalSummary';
     if (office === 'all' || !office) {
       axios
         .get(`${process.env.REACT_APP_API_URI}/${path}`, {
