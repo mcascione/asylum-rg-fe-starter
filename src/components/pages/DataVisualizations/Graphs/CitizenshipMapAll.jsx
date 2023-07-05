@@ -25,9 +25,10 @@ function CitizenshipMapAll(props) {
       setPlotlyGraphAxis({
         locationsAndText:
           citizenshipMapAllData['countryGrantRateObj']['countries'],
-        z: citizenshipMapAllData['countryGrantRateObj'][
-          'countriesPercentGranteds'
-        ],
+        z:
+          citizenshipMapAllData['countryGrantRateObj'][
+            'countriesPercentGranteds'
+          ],
       });
     } else {
       setPlotlyGraphAxis({ locationsAndText: [], z: [] });
@@ -115,8 +116,12 @@ function CitizenshipMapAll(props) {
       />
       <label htmlFor="regionSelect">Select another region below</label>
       <select name="regionSelect" onChange={handleScopeChange}>
-        {geoScopeArray.map(a => {
-          return <option value={a}>{a.toUpperCase()}</option>;
+        {geoScopeArray.map((a, idx) => {
+          return (
+            <option key={idx} value={a}>
+              {a.toUpperCase()}
+            </option>
+          );
         })}
       </select>
       <p>Table view</p>
