@@ -28,7 +28,7 @@ function TableRow(props) {
             );
           } else {
             return (
-              <div style={{ overflow: 'hidden', flex: '1' }}>
+              <div style={{ overflow: 'hidden', flex: '1' }} key={idx}>
                 <TableInnerSquare
                   innerData={row[property]}
                   rowHeight={rowHeight}
