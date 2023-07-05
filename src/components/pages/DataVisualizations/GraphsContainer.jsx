@@ -147,8 +147,11 @@ function GraphsContainer() {
             style={{
               marginRight: '115px',
             }}
-            placeholder="Select an Asylum Office"
+            placeholder={
+              view === 'citizenship' ? 'All Offices' : 'Select an Asylum Office'
+            }
             onSelect={value => handle_office_select(value)}
+            disabled={view === 'citizenship' ? true : false}
           >
             {offices.map((office, idx) =>
               office === 'All' ? (
