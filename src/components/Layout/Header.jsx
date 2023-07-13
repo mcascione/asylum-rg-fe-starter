@@ -7,7 +7,7 @@ import { colors } from '../../styles/data_vis_colors';
 import { LoginButton } from '../../components/Authorization/login-button';
 import { LogoutButton } from '../../components/Authorization/logout-button';
 import { SignupButton } from '../../components/Authorization/signup-button';
-
+import { Button } from 'antd';
 const { primary_accent_color } = colors;
 
 function HeaderContent() {
@@ -35,7 +35,15 @@ function HeaderContent() {
           Graphs
         </Link>
         {isAuthenticated ? (
-          <LogoutButton />
+          <>
+            <Link
+              to="/profile"
+              style={{ color: '#E2F0F7', paddingLeft: '75px' }}
+            >
+              Profile
+            </Link>
+            <LogoutButton />
+          </>
         ) : (
           <>
             <LoginButton />
