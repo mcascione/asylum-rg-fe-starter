@@ -1,12 +1,18 @@
 import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { Image } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../styles/Images/WhiteLogo.png';
 import { colors } from '../../styles/data_vis_colors';
+import { LoginButton } from '../../components/Authorization/login-button';
+import { LogoutButton } from '../../components/Authorization/logout-button';
+import { SignupButton } from '../../components/Authorization/signup-button';
 
 const { primary_accent_color } = colors;
 
 function HeaderContent() {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+
   return (
     <div
       style={{
@@ -28,6 +34,15 @@ function HeaderContent() {
         <Link to="/graphs" style={{ color: '#E2F0F7' }}>
           Graphs
         </Link>
+        {isAuthenticated ? (
+          <LogoutButton />
+        ) : (
+          <>
+            <LoginButton />
+            <SignupButton />
+          </>
+        )}
+        ;
       </div>
     </div>
   );
