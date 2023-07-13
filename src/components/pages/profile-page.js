@@ -10,7 +10,14 @@ export const ProfilePage = () => {
   const history = useHistory();
 
   if (!user) {
-    return null;
+    return (
+      <h1
+        className="header-text-container"
+        style={{ height: '400px', marginTop: '300px', fontSize: '4rem' }}
+      >
+        Please Login or Signup Above
+      </h1>
+    );
   }
 
   return (
