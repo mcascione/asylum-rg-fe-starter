@@ -45,6 +45,7 @@ function RenderLandingPage(props) {
             src={GrantRatesByOfficeImg}
             alt="Grant Rates By Office"
             className="gr-office-img"
+            onClick={() => history.push('/graphs')}
           ></img>
           <p>Search Grant Rates By Office</p>
         </div>
@@ -54,6 +55,7 @@ function RenderLandingPage(props) {
             src={GrantRatesByNationalityImg}
             alt="Grant Rates By Nationality"
             className="gr-nationality-img"
+            onClick={() => history.push('/graphs/all/citizenship')}
           ></img>
           <p>Search Grant Rates By Nationality</p>
         </div>
@@ -63,6 +65,7 @@ function RenderLandingPage(props) {
             src={GrantRatesOverTimeImg}
             alt="Grant Rates Over Time"
             className="gr-overtime-img"
+            onClick={() => history.push('/graphs/all/time-series')}
           ></img>
           <p>Search Grant Rates Over Time</p>
         </div>
